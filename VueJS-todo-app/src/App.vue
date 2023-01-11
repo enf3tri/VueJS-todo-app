@@ -6,9 +6,9 @@
     const newTodo = ref('')
     const hideCompleted = ref(false)
     const todos = ref([
-        { id: id++, text: 'Learn HTML', done: true },
-        { id: id++, text: 'Learn JavaScript', done: true },
-        { id: id++, text: 'Learn Vue', done: false }
+        { id: id++, text: 'Is bulunacak', done: true },
+        { id: id++, text: 'Evlenilecek', done: true },
+        { id: id++, text: 'Sayginlik', done: false }
     ])
 
     const filteredTodos = computed(() => {
@@ -29,9 +29,15 @@
 
 <template>
     <form @submit.prevent="addTodo">
-        <input v-model="newTodo">
-        <button>Add</button>
+
+        <div class="call-button-container">
+            <input v-model="newTodo">
+        </div>
+        <div class="call-button-container">
+            <button>Add</button>
+        </div>
     </form>
+    <div class="background-image"></div>
     <ul>
         <li v-for="todo in filteredTodos" :key="todo.id">
             <input type="checkbox" v-model="todo.done">
@@ -42,6 +48,8 @@
     <button @click="hideCompleted = !hideCompleted">
         {{ hideCompleted ? 'Show all' : 'Hide completed' }}
     </button>
+
+
 </template>
 
 <style>
@@ -51,5 +59,31 @@
     }
     .button {
         color: red;
+    }
+    .call-button-container {
+        margin: auto;
+        width: 233px;
+        height: 74px;
+        vertical-align: middle;
+        padding: 10px;
+        background: #29A3D8;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 20px;
+        font-family: lato-bold;
+        font-size: 17px;
+        color: white;
+    }
+    .background-image {
+        content: url(https://i.hizliresim.com/2bs63np.png);
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+    .input_style {
+        border-radius: 20px;
+        height: 200px;
+        color: cornflowerblue;
+
     }
 </style>

@@ -37,8 +37,9 @@
             <form @submit.prevent="addTodo">
                 <div>
                     <input v-model="newTodo" class="call-button-container">
-                    <div class= "blank"></div>
-                    <button class="add-button">Add</button>
+                    <button class="add-button">
+                        Add
+                    </button>
                 </div>
 
 
@@ -48,11 +49,17 @@
         </div>
     </header>
     <ul>
+        <div class="mid-blank"></div>
         <li v-for="todo in filteredTodos" :key="todo.id">
-            <input type="checkbox" v-model="todo.done">
-            <span :class="{ done: todo.done }">{{ todo.text }}</span>
-            <button @click="removeTodo(todo)">X</button>
-        </li>
+
+            <div class="todo-note">
+                <div class="note-style-i">
+                    <input type="checkbox" v-model="todo.done" class="note-style">
+                    <span :class="{ done: todo.done }">{{ todo.text }}</span>
+                    <button @click="removeTodo(todo)">X</button>
+                </div>
+            </div>
+</li>
     </ul>
     <button @click="hideCompleted = !hideCompleted">
         {{ hideCompleted ? 'Show all' : 'Hide completed' }}
@@ -73,15 +80,30 @@
         margin: auto;
         width: 643px;
         height: 74px;
+        margin-left: 10px;
         vertical-align: middle;
         padding: 2px;
         background: white;
         border-radius: 36px;
-        font-family: lato-bold;
+        font-family: Arial;
         font-size: 38px;
         border: 2px solid rgba(0, 0, 0, 0.1);
         background-color: white;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    .todo-note {
+        margin: auto;
+        margin-top:20px;
+        width: 643px;
+        height: 74px;
+        vertical-align: middle;
+        padding: 2px;
+        background: white;
+        border-radius: 36px;
+        font-family: Arial;
+        font-size: 20px;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.24) 10px 3px 18px;
     }
     .background-image {
         content: url(https://i.hizliresim.com/2bs63np.png);
@@ -97,18 +119,24 @@
         height: 150px;
     }
     .add-button {
-        margin: auto;
+        margin-left: 20px;
         height: 74px;
         width: 74px;
         color: black;
         border-radius: 37px;
         background: black;
+    }
+    .note-style {
+        margin-left: 20px;
+        font-family: lato-bold;
+        font-size: 20px;
+    }
+    .mid-blank {
+        margin-top: 100px;
+    }
+    .note-style-i {
+        margin-top: 15px;
+        text-align: center;
+    }
 
-    }
-    .blank {
-        margin: auto;
-        height: 74px;
-        width: 2px;
-        color: black;
-    }
 </style>

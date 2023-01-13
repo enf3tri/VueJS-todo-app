@@ -50,16 +50,16 @@
     </header>
     <ul>
         <div class="mid-blank"></div>
-        <li v-for="todo in filteredTodos" :key="todo.id">
+        <ul v-for="todo in filteredTodos" :key="todo.id">
 
             <div class="todo-note">
+                <input type="checkbox" v-model="todo.done" class="my-checkbox-x2" value="1" />
                 <div class="note-style-i">
-                    <input type="checkbox" v-model="todo.done" class="note-style">
+
                     <span :class="{ done: todo.done }">{{ todo.text }}</span>
-                    <button @click="removeTodo(todo)">X</button>
                 </div>
             </div>
-</li>
+</ul>
     </ul>
     <button @click="hideCompleted = !hideCompleted">
         {{ hideCompleted ? 'Show all' : 'Hide completed' }}
@@ -92,18 +92,19 @@
     }
     .todo-note {
         margin: auto;
-        margin-top:20px;
+        margin-top: 20px;
         width: 643px;
         height: 74px;
         vertical-align: middle;
         padding: 2px;
         background: white;
-        border-radius: 36px;
+        border-radius: 32px;
         font-family: Arial;
-        font-size: 20px;
+        font-size: 26px;
         border: 2px solid rgba(0, 0, 0, 0.1);
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.24) 10px 3px 18px;
+        list-style: none;
     }
     .background-image {
         content: url(https://i.hizliresim.com/2bs63np.png);
@@ -138,5 +139,15 @@
         margin-top: 15px;
         text-align: center;
     }
+
+    .my-checkbox-x2 {
+        position: absolute;
+        transform: scale(5);
+        margin: 26px 10px 0 0;
+        margin-left: 50px;
+        accent-color: #34495e;
+    }
+
+
 
 </style>

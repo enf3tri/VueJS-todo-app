@@ -49,7 +49,6 @@
         </div>
     </header>
     <ul>
-        <div class="mid-blank"></div>
         <li v-for="todo in filteredTodos" :key="todo.id">
 
             <div class="todo-note">
